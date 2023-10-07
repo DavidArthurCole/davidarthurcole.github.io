@@ -321,16 +321,35 @@ h2 {
     font-weight: bold;
 }
 
+.pullout-span {
+    /* Center text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Style for the pullout div on the left */
 .pullout-div-left {
     left: 0; /* Move the div to the left edge of the circle */
     transform: translateX(-100%); /* Move it off-screen to the left */
+    /* Move Items in the div to the right */
+    flex-direction: row-reverse;
+    /* Center text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Style for the pullout div on the right */
 .pullout-div-right {
     right: 0; /* Move the div to the right edge of the circle */
     transform: translateX(100%); /* Move it off-screen to the right */
+    /* Move Items in the div to the left */
+    flex-direction: row;
+    /* Center text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Hover effect to show the pullout divs */
