@@ -1,3 +1,79 @@
+/* Define CSS variables for the default screen size */
+:root {
+    --closeable-size: 10px;
+    --pullout-width: 250px;
+    --pullout-height: 30px;
+    --h1-font-size: 85px;
+    --h2-font-size: 30px;
+    --slide-content-padding: 20px;
+    --link-underscore-offset: 3px;
+    --social-link-offset: 15px;
+    --circle-size-1: 50px;
+    --circle-size-2: 100px;
+    --circle-size-3: 200px;
+    --circle-size-4: 400px;
+    --circle-size-5: 800px;
+    --circle-size-6: 1200px;
+    --circle-radius-1: calc(var(--circle-size-1) / 2);
+    --circle-radius-2: calc(var(--circle-size-2) / 2);
+    --circle-radius-3: calc(var(--circle-size-3) / 2);
+    --circle-radius-4: calc(var(--circle-size-4) / 2);
+    --circle-radius-5: calc(var(--circle-size-5) / 2);
+    --circle-radius-6: calc(var(--circle-size-6) / 2);
+}
+
+/* Media query for screens smaller than 1080px */
+@media (max-width: 2000px) {
+    :root {
+        --closeable-size: 8px;
+        --pullout-width: 145px;
+        --pullout-height: 20px;
+        --h1-font-size: 55px;
+        --h2-font-size: 20px;
+        --slide-content-padding: 10px;
+        --social-link-offset: 10px;
+        --link-underscore-offset: 2px;
+        --circle-size-1: 30px;
+        --circle-size-2: 60px;
+        --circle-size-3: 120px;
+        --circle-size-4: 240px;
+        --circle-size-5: 480px;
+        --circle-size-6: 720px;
+        --circle-radius-1: calc(var(--circle-size-1) / 2);
+        --circle-radius-2: calc(var(--circle-size-2) / 2);
+        --circle-radius-3: calc(var(--circle-size-3) / 2);
+        --circle-radius-4: calc(var(--circle-size-4) / 2);
+        --circle-radius-5: calc(var(--circle-size-5) / 2);
+        --circle-radius-6: calc(var(--circle-size-6) / 2);
+    }
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+    :root {
+        --closeable-size: 6px;
+        --pullout-width: 90px;
+        --pullout-height: 25px;
+        --h1-font-size: 30px;
+        --h2-font-size: 10px;
+        --slide-content-padding: 5px;
+        --social-link-offset: 5px;
+        --link-underscore-offset: 1px;
+        --circle-size-1: 15px;
+        --circle-size-2: 30px;
+        --circle-size-3: 60px;
+        --circle-size-4: 120px;
+        --circle-size-5: 240px;
+        --circle-size-6: 360px;
+        --circle-radius-1: calc(var(--circle-size-1) / 2);
+        --circle-radius-2: calc(var(--circle-size-2) / 2);
+        --circle-radius-3: calc(var(--circle-size-3) / 2);
+        --circle-radius-4: calc(var(--circle-size-4) / 2);
+        --circle-radius-5: calc(var(--circle-size-5) / 2);
+        --circle-radius-6: calc(var(--circle-size-6) / 2);
+    }
+}
+
 .circle-base {
     text-align: center;
     display: flex;
@@ -11,58 +87,60 @@
 }
 
 .circle-1 {
-    width: 50px;
-    height: 50px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    border-radius: 25px;
+    width: var(--circle-size-1);
+    height: var(--circle-size-1);
+    -webkit-border-radius: var(--circle-radius-1);
+    -moz-border-radius: var(--circle-radius-1);
+    box-shadow: 0px calc(var(--circle-size-1) / 10) calc(var(--circle-size-1) / 5) rgba(0, 0, 0, 0.3);
+    border-radius: var(--circle-radius-1);
 }
 
 .circle-2 {
-    width: 100px;
-    height: 100px;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
+    width: var(--circle-size-2);
+    height: var(--circle-size-2);
+    -webkit-border-radius: var(--circle-radius-2);
+    -moz-border-radius: var(--circle-radius-2);
+    box-shadow: calc(var(--circle-size-2) / 50) calc(var(--circle-size-2) / 10) calc(var(--circle-size-2) / 5) rgba(0, 0, 0, 0.3);
+    border-radius: var(--circle-radius-2);
 }
 
 .circle-3 {
-    width: 200px;
-    height: 200px;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
-    border-radius: 100px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    width: var(--circle-size-3);
+    height: var(--circle-size-3);
+    -webkit-border-radius: var(--circle-radius-3);
+    -moz-border-radius: var(--circle-radius-3);
+    border-radius: var(--circle-radius-3);
+    box-shadow: calc(var(--circle-size-3) / 100) calc(var(--circle-size-3) / 20) calc(var(--circle-size-3) / 10) rgba(0, 0, 0, 0.3);
     flex-shrink: 0; /* Prevent stretching */
 }
 
 .circle-4 {
-    width: 400px;
-    height: 400px;
-    -webkit-border-radius: 200px;
-    -moz-border-radius: 200px;
-    border-radius: 200px;
-    box-shadow: 3px 10px 20px rgba(0, 0, 0, 0.6);
+    width: var(--circle-size-4);
+    height: var(--circle-size-4);
+    -webkit-border-radius: var(--circle-radius-4);
+    -moz-border-radius: var(--circle-radius-4);
+    border-radius: var(--circle-radius-4);
+    box-shadow: calc(var(--circle-size-4) / 200) calc(var(--circle-size-4) / 40) calc(var(--circle-size-4) / 20) rgba(0, 0, 0, 0.3);
     flex-shrink: 0; /* Prevent stretching */
 }
 
 .circle-5 {
-    width: 800px;
-    height: 800px;
-    -webkit-border-radius: 400px;
-    -moz-border-radius: 400px;
-    border-radius: 400px;
-    box-shadow: 6px 20px 40px rgba(0, 0, 0, 0.6);
+    width: var(--circle-size-5);
+    height: var(--circle-size-5);
+    -webkit-border-radius: var(--circle-radius-5);
+    -moz-border-radius: var(--circle-radius-5);
+    border-radius: var(--circle-radius-5);
+    box-shadow: calc(var(--circle-size-4) / 400) calc(var(--circle-size-4) / 80) calc(var(--circle-size-4) / 40) rgba(0, 0, 0, 0.3);
     flex-shrink: 0; /* Prevent stretching */
 }
 
 .circle-6 {
-    width: 1200px;
-    height: 1200px;
-    -webkit-border-radius: 600px;
-    -moz-border-radius: 600px;
-    border-radius: 600px;
-    box-shadow: 10px 30px 60px rgba(0, 0, 0, 0.6);
+    width: var(--circle-size-6);
+    height: var(--circle-size-6);
+    -webkit-border-radius: var(--circle-radius-6);
+    -moz-border-radius: var(--circle-radius-6);
+    border-radius: var(--circle-radius-6);
+    box-shadow: calc(var(--circle-size-4) / 600) calc(var(--circle-size-4) / 120) calc(var(--circle-size-4) / 60) rgba(0, 0, 0, 0.3);
     flex-shrink: 0; /* Prevent stretching */
 }
 
@@ -96,7 +174,7 @@
 }
 
 .slide-content {
-    padding: 20px;
+    padding: var(--slide-content-padding)
 }
 
 body {
@@ -136,7 +214,7 @@ body {
 }
 
 .social-link {
-    margin: 0 15px;
+    margin: 0 var(--social-link-offset);
 }
 
 .links-container {
@@ -145,7 +223,7 @@ body {
 }
 
 .links-container a {
-    margin: 0 15px;
+    margin: 0 var(--social-link-offset);
     text-decoration: none;
     color: black;
     position: relative;
@@ -155,8 +233,9 @@ body {
     content: "";
     position: absolute;
     width: 0;
-    height: 3px;
-    bottom: -15px;
+    /* Dynamically sized based on --social-link-offset*/
+    height: calc(var(--social-link-offset) / 5);
+    bottom: calc(-1 * var(--social-link-offset));
     left: 50%;
     background-color: black;
     transition: all .3s ease-in-out;
@@ -188,33 +267,33 @@ body {
 
 h1 {
     font-weight: bold;
-    font-size: 85px;
+    font-size: var(--h1-font-size);
 }
 
 h2 {
     font-weight: bold;
-    font-size: 24px;
+    font-size: var(--h2-font-size);
 }
 
 /* Style for the close-able div container */
 .closeable-div {
     position: absolute;
-    top: 10px; /* Adjust the top position as needed */
-    left: 10px; /* Adjust the left position as needed */
-    padding: 10px;
-    border: 1px solid #23021d;
+    top: var(--closeable-size); /* Adjust the top position as needed */
+    left: var(--closeable-size); /* Adjust the left position as needed */
+    padding: var(--closeable-size);
+    border: calc(var(--closeable-size) / 3) solid #23021d;
     font-size: large;
-    border-radius: 5px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: calc(var(--closeable-size) / 2);
+    box-shadow: calc(var(--closeable-size) / 3) calc(var(--closeable-size) / 3)calc(var(--closeable-size) / 2) rgba(0, 0, 0, 0.2);
 }
 
 /* Style for the close button (×) */
 .close-button {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: calc(var(--closeable-size) / 2);
+    right: calc(var(--closeable-size) / 2);
     cursor: pointer;
-    font-size: 20px;
+    font-size: var(--h2-font-size);
     color: #555;
 }
 
@@ -228,16 +307,18 @@ h2 {
     position: absolute;
     text-align: center;
     border-image: linear-gradient(#8b1d77 100%, #5c0f4a 1%);
-    border-radius: 3px;
-    line-height: 1.5; /* Adjust the line height as needed */
-    padding: 10px; /* Adjust the padding as needed */
-    width: 200px; /* Adjust the width as needed */
+    border-radius: var(--link-underscore-offset);
+    padding: var(--pullout-width / 5); /* Adjust the padding as needed */
+    height: var(--pullout-height); /* Adjust the height as needed */
+    width: var(--pullout-width); /* Adjust the width as needed */
     left: 50%; /* Horizontally center the div */
     transform: translateX(-50%), translateY(-50%); /* Horizontally center the div */
     top: 50%; /* Vertically center the div */
     opacity: 1; /* Initially hidden */
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     z-index: 2; /* Move the div behind the circles */
+    font: (--h2-font-size) Arial, sans-serif;
+    font-weight: bold;
 }
 
 /* Style for the pullout div on the left */
