@@ -1,0 +1,258 @@
+.circle-base {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+    font-size: 1.5em;
+    font-weight: bold;
+    transition: transform 0.5s ease; /* Add a transition for transform property */
+}
+
+.circle-1 {
+    width: 50px;
+    height: 50px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+}
+
+.circle-2 {
+    width: 100px;
+    height: 100px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+}
+
+.circle-3 {
+    width: 200px;
+    height: 200px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0; /* Prevent stretching */
+}
+
+.circle-4 {
+    width: 400px;
+    height: 400px;
+    -webkit-border-radius: 200px;
+    -moz-border-radius: 200px;
+    border-radius: 200px;
+    box-shadow: 3px 10px 20px rgba(0, 0, 0, 0.6);
+    flex-shrink: 0; /* Prevent stretching */
+}
+
+.circle-5 {
+    width: 800px;
+    height: 800px;
+    -webkit-border-radius: 400px;
+    -moz-border-radius: 400px;
+    border-radius: 400px;
+    box-shadow: 6px 20px 40px rgba(0, 0, 0, 0.6);
+    flex-shrink: 0; /* Prevent stretching */
+}
+
+.circle-6 {
+    width: 1200px;
+    height: 1200px;
+    -webkit-border-radius: 600px;
+    -moz-border-radius: 600px;
+    border-radius: 600px;
+    box-shadow: 10px 30px 60px rgba(0, 0, 0, 0.6);
+    flex-shrink: 0; /* Prevent stretching */
+}
+
+.center {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-span {
+    color: black;
+}
+
+.slide-container-left {
+    position: fixed;
+    top: 0;
+    left: -20%; /* Start off-screen to the left */
+    width: 20%;
+    height: 100%;
+    transition: left 0.5s ease-in-out; /* Smooth transition when sliding in */
+}
+
+.slide-container-right {
+    position: fixed;
+    top: 0;
+    right: -20%; /* Initially, 20% off-screen to the right */
+    width: 20%; /* Occupies 20% of the viewport width */
+    height: 100%;
+    transition: right 0.5s ease-in-out; /* Transition on the right property */
+}
+
+.slide-content {
+    padding: 20px;
+}
+
+body {
+    background: url('media/snow-winter-new.gif') no-repeat center center fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(17, 3, 15, 0.8), rgba(35, 1, 30, 0.95));
+}
+
+.main-color {
+    background: linear-gradient(to top, #65185a, #440f3b);
+}
+
+.secondary-color {
+    background: linear-gradient(to top, rgba(138, 18, 118, 1), rgba(120, 21, 131, 1));
+}
+
+.secondary-to-left {
+    background: linear-gradient(to left, rgba(138, 18, 118, 0), rgba(120, 21, 131, 1));
+}
+
+.secondary-to-right {
+    background: linear-gradient(to right, rgba(138, 18, 118, 0), rgba(120, 21, 131, 1) );
+}
+
+.social-link {
+    margin: 0 15px;
+}
+
+.links-container {
+    display: flex;
+    justify-content: center;
+}
+
+.links-container a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: black;
+    position: relative;
+}
+
+.links-container a::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -15px;
+    left: 50%;
+    background-color: black;
+    transition: all .3s ease-in-out;
+}
+
+.links-container a:hover::before {
+    width: 100%;
+    left: 0;
+}
+
+.links-container a:hover {
+    color: black;
+    transition: color .3s ease-in-out;
+}
+
+.social-icon{
+    object-fit: cover;
+}
+
+.social-icon:hover{
+    transform: scale(1.1);
+    transition: transform .3s ease-in-out;
+}
+
+.social-icon::after{
+    /* softly transition scale back to 1.0 over .3s */
+    transition: transform .3s ease-in-out;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 85px;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+/* Style for the close-able div container */
+.closeable-div {
+    position: absolute;
+    top: 10px; /* Adjust the top position as needed */
+    left: 10px; /* Adjust the left position as needed */
+    padding: 10px;
+    border: 1px solid #23021d;
+    font-size: large;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for the close button (×) */
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #555;
+}
+
+/* Hover effect for the close button */
+.close-button:hover {
+    color: rgb(199, 34, 218);
+}
+
+/* Style for the pullout divs */
+.pullout-div {
+    position: absolute;
+    text-align: center;
+    border-image: linear-gradient(#8b1d77 100%, #5c0f4a 1%);
+    border-radius: 3px;
+    line-height: 1.5; /* Adjust the line height as needed */
+    padding: 10px; /* Adjust the padding as needed */
+    width: 200px; /* Adjust the width as needed */
+    left: 50%; /* Horizontally center the div */
+    transform: translateX(-50%), translateY(-50%); /* Horizontally center the div */
+    top: 50%; /* Vertically center the div */
+    opacity: 1; /* Initially hidden */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    z-index: 2; /* Move the div behind the circles */
+}
+
+/* Style for the pullout div on the left */
+.pullout-div-left {
+    left: 0; /* Move the div to the left edge of the circle */
+    transform: translateX(-100%); /* Move it off-screen to the left */
+}
+
+/* Style for the pullout div on the right */
+.pullout-div-right {
+    right: 0; /* Move the div to the right edge of the circle */
+    transform: translateX(100%); /* Move it off-screen to the right */
+}
+
+/* Hover effect to show the pullout divs */
+.slide-content:hover .pullout-div {
+    opacity: 0; /* Hide the div on hover */
+}
