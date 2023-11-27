@@ -155,6 +155,13 @@
     color: black;
 }
 
+.secondary-span {
+    color: darkgray;
+    font-size: 0.9rem;
+    max-width: 50%;
+    margin: 10px;
+}
+
 .slide-container-left {
     position: fixed;
     top: 0;
@@ -355,4 +362,14 @@ h2 {
 /* Hover effect to show the pullout divs */
 .slide-content:hover .pullout-div {
     opacity: 0; /* Hide the div on hover */
+}
+
+.skill-circle {
+    margin: 10px;
+}
+
+.skill-circle img {
+    width: 70%;
+    height: 70%;
+    object-fit: cover;
 }
