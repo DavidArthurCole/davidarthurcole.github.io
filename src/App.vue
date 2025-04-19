@@ -136,13 +136,13 @@ export default {
 	gap: 1rem;
 	width: 60%;
 	margin: 0 auto;
-	padding: 2rem 0;
+	padding: 1rem 0;
 }
 
 .content-sections {
 	width: 60%;
 	margin: 0 auto;
-	padding: 2rem 0;
+	padding: 1rem 0;
 }
 
 .contact-container {
@@ -154,33 +154,15 @@ export default {
 	padding: 0;
 }
 
-@media (max-width: 768px) {
-	.section-title,
-	.contact-container,
-	.skills-section,
-	.content-sections {
-		width: 90% !important;
-		margin: 1.5rem auto !important;
-	}
-
-	.contact-container {
-		flex-direction: column;
-		gap: 1rem;
-	}
-
-	.contact-card {
-		width: 100%;
-		margin: 0 !important;
-	}
-
+@media (max-width: 480px) {
 	.skills-section {
-		flex-direction: column;
-		gap: 1rem;
+		width: 95% !important;
+		gap: 0.5rem;
 	}
 
 	.skill-card {
 		width: 100% !important;
-		padding: 0.75rem !important;
+		padding: 0.5rem !important;
 	}
 
 	.skill-image {
@@ -192,11 +174,106 @@ export default {
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		display: block;
 	}
 
-	.skill-desc {
-		font-size: 0.85rem !important;
+	.contact-container {
+		flex-direction: column !important;
+		width: 95% !important;
+	}
+
+	.contact-card {
+		width: 100% !important;
+		margin: 0 !important;
+	}
+
+	.content-sections {
+		width: 95% !important;
+	}
+
+	.section-block {
+		width: 100% !important;
+	}
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+	.skills-section {
+		width: 90% !important;
+	}
+
+	.skill-card {
+		width: calc((100% - 1rem) / 2) !important;
+	}
+
+	.contact-container {
+		flex-wrap: wrap;
+		width: 90% !important;
+	}
+
+	.contact-card {
+		width: calc((100% - 1rem) / 2) !important;
+		margin: 0 !important;
+	}
+
+	.content-sections {
+		width: calc((100% - 1rem) / 2) !important;
+	}
+
+	.section-block {
+		width: 100% !important;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	.skills-section {
+		width: 80% !important;
+	}
+
+	.skill-card {
+		width: calc((100% - 2rem) / 3) !important;
+	}
+
+	.contact-container {
+		flex-wrap: wrap;
+		width: 80% !important;
+	}
+
+	.contact-card {
+		width: calc((100% - 2rem) / 3) !important;
+		margin: 0 !important;
+	}
+
+	.content-sections {
+		width: calc((100% - 2rem) / 3) !important;
+	}
+
+	.section-block {
+		width: 100% !important;
+	}
+}
+
+@media (min-width: 1025px) {
+	.skills-section {
+		width: 60% !important;
+	}
+
+	.skill-card {
+		width: calc((100% - 2rem) / 3) !important;
+	}
+
+	.contact-container {
+		width: 60% !important;
+	}
+
+	.contact-card {
+		width: auto;
+	}
+
+	.content-sections {
+		width: 60% !important;
+	}
+
+	.section-block {
+		width: 100% !important;
 	}
 }
 </style>
