@@ -153,4 +153,50 @@ export default {
 	margin: 2rem auto;
 	padding: 0;
 }
+
+@media (max-width: 768px) {
+	.section-title,
+	.contact-container,
+	.skills-section,
+	.content-sections {
+		width: 90% !important;
+		margin: 1.5rem auto !important;
+	}
+
+	.contact-container {
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.contact-card {
+		width: 100%;
+		margin: 0 !important;
+	}
+
+	.skills-section {
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.skill-card {
+		width: 100% !important;
+		padding: 0.75rem !important;
+	}
+
+	.skill-image {
+		max-height: 60px !important;
+	}
+
+	.skill-text a {
+		font-size: 1rem !important;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: block;
+	}
+
+	.skill-desc {
+		font-size: 0.85rem !important;
+	}
+}
 </style>
