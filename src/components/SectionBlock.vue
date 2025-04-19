@@ -1,6 +1,9 @@
 <template>
     <div class="section-block">
-        <h2>{{ section.title }}</h2>
+        <a v-if="section.link" :href="section.link" target="_blank" rel="noopener noreferrer">
+            <h2>{{ section.title }}</h2>
+        </a>
+        <h2 v-else>{{ section.title }}</h2>
         <div v-html="section.content"></div>
     </div>
 </template>
@@ -12,7 +15,7 @@ export default {
             type: Object,
             required: true
         }
-    }
+    },
 };
 </script>
 
@@ -27,5 +30,6 @@ export default {
 
 .section-block h2 {
     margin-top: 0;
+    margin-bottom: 0.5rem;
 }
 </style>

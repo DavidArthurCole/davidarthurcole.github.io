@@ -1,6 +1,7 @@
 <template>
   <div
     class="skill-card"
+    :style="{ '--overflow-color': skill.hoverColor }"
     @mouseenter="onEnter"
     @mouseleave="onLeave"
   >
@@ -65,8 +66,14 @@ export default {
 }
 
 .skill-image {
-  max-width: 100%;
-  opacity: 0.9;
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  min-height: 80px;
+  max-height: 80px;
+  object-fit: contain;
+  background-color: var(--overflow-color);
+  padding: 0.5rem;
 }
 
 .skill-text {
