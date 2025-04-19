@@ -1,0 +1,218 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--color-bg-start);
+  color: var(--color-text);
+}
+
+/* =====================================================
+   VARIABLES
+   ===================================================== */
+:root {
+  /* background gradient endpoints */
+  --color-bg-start: #1a1a1a;
+  --color-bg-end:   #4b0000;
+
+  /* cards & blocks */
+  --color-card-bg:       rgba(30, 30, 30, 0.85);
+  --color-card-hover-bg: rgba(50, 50, 50, 0.85);
+
+  /* text */
+  --color-text:       #e0e0e0;
+  --color-text-muted: #a0a0a0;
+
+  /* accent (links, dividers, scroll thumb) */
+  --color-accent:       #d4af37;
+  --color-accent-light: #ffd700;
+}
+
+/* =====================================================
+   GLOBAL LAYOUT & TYPOGRAPHY
+   ===================================================== */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: none;  /* gradient lives on the scroll container */
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* =====================================================
+   SCROLLABLE APP CONTAINER & GRADIENT
+   ===================================================== */
+.app-container {
+  height: 100vh;
+  overflow-y: auto;
+
+  /* scroll‑driven vertical gradient */
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg-start) 0%,
+    var(--color-bg-end)   100%
+  );
+  background-size: 100% 200%;
+  background-attachment: local;
+  transition: background-position 0.2s ease;
+}
+
+/* custom scrollbar */
+.app-container::-webkit-scrollbar {
+  width: 8px;
+}
+.app-container::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 4px;
+}
+
+/* hover overlay full‑screen */
+#hoverOverlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-color: var(--hover-overlay);
+  transition: background-color 0.5s ease;
+  z-index: 1;
+}
+
+/* =====================================================
+   LINKS
+   ===================================================== */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--color-accent-light);
+  text-decoration: underline;
+}
+
+/* =====================================================
+   SECTION TITLE
+   ===================================================== */
+.section-title {
+  width: 60%;
+  margin: 3rem auto 1rem;
+  text-align: center;
+}
+.section-title .divider {
+  width: 40%;
+  height: 2px;
+  background: var(--color-accent);
+  margin: 0 auto 0.5rem;
+}
+.section-title h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* =====================================================
+   GENERAL BLOCKS & CARDS
+   ===================================================== */
+.skill-card,
+.contact-card,
+.section-block {
+  background: var(--color-card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.skill-card:hover,
+.contact-card:hover {
+  background: var(--color-card-hover-bg);
+  transform: translateY(-4px);
+}
+
+/* =====================================================
+   SKILLS GRID
+   ===================================================== */
+.skills-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  width: 60%;
+  margin: 2rem auto;
+  padding-bottom: 2rem;
+}
+
+/* DESCRIPTION EXPAND */
+.skill-desc {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+.skill-card:hover .skill-desc {
+  max-height: 6rem;
+  opacity: 1;
+}
+
+/* SKILL IMAGE & TEXT */
+.skill-image {
+  max-width: 80%;
+  opacity: 0.9;
+  margin: 0 auto;
+}
+.skill-text {
+  margin-top: 0.5rem;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* =====================================================
+   CONTACTS GRID
+   ===================================================== */
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 60%;
+  margin: 2rem auto;
+}
+.contact-card {
+  flex: 1;
+  padding: 1.25rem;
+  text-align: center;
+}
+.contact-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.contact-content a {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+/* =====================================================
+   CONTENT SECTIONS (About, Projects, etc.)
+   ===================================================== */
+.content-sections {
+  width: 60%;
+  margin: 2rem auto;
+  padding: 0;
+}
+.section-block {
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-text);
+}
+.section-block h2 {
+  margin-top: 0;
+}
