@@ -29,17 +29,15 @@ export default {
 		const contactSections = ref([
 			{
 				title: "Email",
-				content: "<p><a href='mailto:dxcrcc@rit.edu'>dxcrcc@rit.edu</a></p>",
+				content: "<p><a href='mailto:dxcrcc@rit.edu' target='_blank' rel='noopener noreferrer'>dxcrcc@rit.edu</a></p>",
 			},
 			{
 				title: "LinkedIn",
-				content:
-					"<p><a href='https://www.linkedin.com/in/DavidArthurCole/'>DavidArthurCole</a></p>",
+				content: "<p><a href='https://www.linkedin.com/in/DavidArthurCole/ target='_blank' rel='noopener noreferrer''>DavidArthurCole</a></p>",
 			},
 			{
 				title: "GitHub",
-				content:
-					"<p><a href='https://github.com/DavidArthurCole'>DavidArthurCole</a></p>",
+				content: "<p><a href='https://github.com/DavidArthurCole' target='_blank' rel='noopener noreferrer'>DavidArthurCole</a></p>",
 			},
 		]);
 
