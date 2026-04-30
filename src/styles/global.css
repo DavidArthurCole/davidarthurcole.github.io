@@ -49,7 +49,6 @@ body {
   inset: 0;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 1.5s ease;
   z-index: 1;
 }
 

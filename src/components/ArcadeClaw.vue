@@ -111,6 +111,7 @@ onMounted(async () => {
 
 <template>
   <Teleport to="body">
+    <Transition name="claw-fade">
     <div v-if="visible" class="claw-root" aria-hidden="true">
       <div class="cable" :class="cablePhase" ref="cableEl" :style="{ height: cableHeight + 'px' }" />
 
@@ -171,6 +172,7 @@ onMounted(async () => {
         <circle cx="40" cy="26" r="1.5" fill="#6060b0"/>
       </svg>
     </div>
+    </Transition>
   </Teleport>
 </template>
 
@@ -212,4 +214,15 @@ onMounted(async () => {
 /* Closed: arms pulled in — limited to ~12deg so arm bodies never cross center */
 .arm-l.arm-closed { transform: rotate(-12deg); }
 .arm-r.arm-closed { transform: rotate(12deg); }
+
+.claw-fade-enter-active {
+  transition: opacity 0.35s ease;
+}
+.claw-fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+.claw-fade-enter-from,
+.claw-fade-leave-to {
+  opacity: 0;
+}
 </style>

@@ -28,6 +28,7 @@ function setOverlay(event: MouseEvent) {
   const color = (event.currentTarget as HTMLElement).dataset.hoverColor;
   const overlay = document.getElementById('hover-overlay');
   if (!overlay || !color) return;
+  overlay.style.transition = 'none';
   overlay.style.background = `radial-gradient(ellipse 420px 320px at ${event.clientX}px ${event.clientY}px, ${color} 0%, transparent 100%)`;
   overlay.style.opacity = '1';
 }
@@ -42,7 +43,9 @@ function onMove(event: MouseEvent) {
 
 function onLeave() {
   const overlay = document.getElementById('hover-overlay');
-  if (overlay) overlay.style.opacity = '0';
+  if (!overlay) return;
+  overlay.style.transition = 'opacity 0.8s ease';
+  overlay.style.opacity = '0';
 }
 
 function openPopout() {
