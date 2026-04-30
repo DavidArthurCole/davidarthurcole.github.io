@@ -24,19 +24,20 @@ const imgFailed = ref(false);
 const popoutEl = ref<HTMLElement | null>(null);
 const isOpen = computed(() => activeCard.value === props.skill.name);
 
-function setOverlay(x: number, y: number) {
+function setOverlay(event: MouseEvent) {
+  const color = (event.currentTarget as HTMLElement).dataset.hoverColor;
   const overlay = document.getElementById('hover-overlay');
-  if (!overlay) return;
-  overlay.style.background = `radial-gradient(ellipse 420px 320px at ${x}px ${y}px, ${props.skill.hoverColor} 0%, transparent 100%)`;
+  if (!overlay || !color) return;
+  overlay.style.background = `radial-gradient(ellipse 420px 320px at ${event.clientX}px ${event.clientY}px, ${color} 0%, transparent 100%)`;
   overlay.style.opacity = '1';
 }
 
 function onEnter(event: MouseEvent) {
-  setOverlay(event.clientX, event.clientY);
+  setOverlay(event);
 }
 
 function onMove(event: MouseEvent) {
-  setOverlay(event.clientX, event.clientY);
+  setOverlay(event);
 }
 
 function onLeave() {
@@ -77,6 +78,7 @@ onUnmounted(() => {
     class="skill-card relative z-10 rounded-xl border border-white/10 p-5 text-center cursor-pointer w-full transition-transform duration-200 hover:-translate-y-1"
     :class="{ 'card-active': isOpen }"
     style="background: rgba(10,10,26,0.88);"
+    :data-hover-color="skill.hoverColor"
     @click="openPopout"
     @mouseenter="onEnter"
     @mousemove="onMove"
