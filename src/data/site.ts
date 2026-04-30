@@ -176,11 +176,6 @@ export const snHighlights: SNHighlight[] = [
   },
 ];
 
-export const snCommunity = {
-  href: 'https://www.servicenow.com/community/user/viewprofilepage/user-id/431369',
-  credlyHref: 'https://www.credly.com/users/david-cole.ee1995d9',
-};
-
 export const experience: WorkEntry[] = [
   {
     role: 'IT Application Developer',

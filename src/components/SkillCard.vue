@@ -16,6 +16,23 @@ interface Skill {
   relatedProjects?: SkillProject[];
 }
 
+// Detect software rendering (e.g. Firefox with hardware acceleration disabled)
+const softwareRendered: boolean = (() => {
+  try {
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl') as WebGLRenderingContext | null;
+    if (!gl) return true;
+    const ext = gl.getExtension('WEBGL_debug_renderer_info');
+    if (ext) {
+      const renderer = gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) as string;
+      return /swiftshader|llvmpipe|software|mesa offscreen/i.test(renderer);
+    }
+    return false;
+  } catch {
+    return false;
+  }
+})();
+
 // Module-level singleton: only one popout open at a time across all cards
 const activeCard = ref<string | null>(null);
 
@@ -33,15 +50,32 @@ function setOverlay(event: MouseEvent) {
   overlay.style.opacity = '1';
 }
 
+function applyCardGlow(event: MouseEvent) {
+  const el = event.currentTarget as HTMLElement;
+  const color = el.dataset.hoverColor ?? 'rgba(0,180,216,0.5)';
+  el.style.transition = 'transform 0.2s, box-shadow 0.2s ease, border-color 0.2s ease';
+  el.style.boxShadow = `0 0 18px 4px ${color}`;
+  el.style.borderColor = color;
+}
+
+function removeCardGlow(event: MouseEvent) {
+  const el = event.currentTarget as HTMLElement;
+  el.style.boxShadow = '';
+  el.style.borderColor = '';
+}
+
 function onEnter(event: MouseEvent) {
+  if (softwareRendered) { applyCardGlow(event); return; }
   setOverlay(event);
 }
 
 function onMove(event: MouseEvent) {
+  if (softwareRendered) return;
   setOverlay(event);
 }
 
-function onLeave() {
+function onLeave(event: MouseEvent) {
+  if (softwareRendered) { removeCardGlow(event); return; }
   const overlay = document.getElementById('hover-overlay');
   if (!overlay) return;
   overlay.style.transition = 'opacity 0.8s ease';
@@ -85,7 +119,7 @@ onUnmounted(() => {
     @click="openPopout"
     @mouseenter="onEnter"
     @mousemove="onMove"
-    @mouseleave="onLeave"
+    @mouseleave="onLeave($event)"
   >
     <div class="h-16 flex items-center justify-center mb-3">
       <img

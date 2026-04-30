@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue';
-import { profile, snCommunity } from '../data/site';
+import { profile } from '../data/site';
 
 const sections = [
   'about',
@@ -98,13 +98,6 @@ function scrollTo(id: string) {
             <rect x="2" y="4" width="20" height="16" rx="2" />
             <path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7" />
           </svg>
-        </a>
-        <span class="chip-divider" aria-hidden="true" />
-        <a :href="snCommunity.href" target="_blank" rel="noopener noreferrer" aria-label="ServiceNow Community profile" class="chip-social">
-          <img src="/images/servicenow.png" alt="" class="chip-icon-img" />
-        </a>
-        <a :href="snCommunity.credlyHref" target="_blank" rel="noopener noreferrer" aria-label="Credly credentials" class="chip-social">
-          <img src="https://cdn.simpleicons.org/credly/FF6A13" alt="" class="chip-icon-img" />
         </a>
       </div>
       </Transition>
