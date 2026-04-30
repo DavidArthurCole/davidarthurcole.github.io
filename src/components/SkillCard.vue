@@ -24,15 +24,19 @@ const imgFailed = ref(false);
 const popoutEl = ref<HTMLElement | null>(null);
 const isOpen = computed(() => activeCard.value === props.skill.name);
 
-function onEnter(event: MouseEvent) {
-  const el = event.currentTarget as HTMLElement;
-  const rect = el.getBoundingClientRect();
-  const cx = Math.round(rect.left + rect.width / 2);
-  const cy = Math.round(rect.top + rect.height / 2);
+function setOverlay(x: number, y: number) {
   const overlay = document.getElementById('hover-overlay');
   if (!overlay) return;
-  overlay.style.background = `radial-gradient(ellipse 900px 700px at ${cx}px ${cy}px, ${props.skill.hoverColor} 0%, transparent 100%)`;
+  overlay.style.background = `radial-gradient(ellipse 420px 320px at ${x}px ${y}px, ${props.skill.hoverColor} 0%, transparent 100%)`;
   overlay.style.opacity = '1';
+}
+
+function onEnter(event: MouseEvent) {
+  setOverlay(event.clientX, event.clientY);
+}
+
+function onMove(event: MouseEvent) {
+  setOverlay(event.clientX, event.clientY);
 }
 
 function onLeave() {
@@ -72,9 +76,10 @@ onUnmounted(() => {
   <button
     class="skill-card relative z-10 rounded-xl border border-white/10 p-5 text-center cursor-pointer w-full transition-transform duration-200 hover:-translate-y-1"
     :class="{ 'card-active': isOpen }"
-    style="background: rgba(0,0,0,0.45);"
+    style="background: rgba(10,10,26,0.88);"
     @click="openPopout"
     @mouseenter="onEnter"
+    @mousemove="onMove"
     @mouseleave="onLeave"
   >
     <div class="h-16 flex items-center justify-center mb-3">
@@ -99,11 +104,10 @@ onUnmounted(() => {
 
   <Teleport to="body">
     <Transition name="popout-slide">
-      <div
+      <section
         v-if="isOpen"
         ref="popoutEl"
         class="skill-popout"
-        role="region"
         :aria-label="`${skill.name} details`"
       >
         <button class="popout-close" @click="closePopout" aria-label="Close">
@@ -163,20 +167,20 @@ onUnmounted(() => {
             <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6m0 0v6m0-6L10 14" />
           </svg>
         </a>
-      </div>
+      </section>
     </Transition>
   </Teleport>
 </template>
 
 <style scoped>
 .skill-card {
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(10, 10, 26, 0.88);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .card-active {
   border-color: rgba(255, 255, 255, 0.22);
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(10, 10, 26, 0.96);
 }
 
 .card-tagline {
@@ -209,7 +213,7 @@ onUnmounted(() => {
   position: absolute;
   top: 14px;
   right: 14px;
-  background: rgba(255, 255, 255, 0.06);
+  background: #16162a;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 6px;
   width: 28px;
@@ -217,14 +221,14 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #707070;
+  color: #909090;
   cursor: pointer;
   transition: color 0.2s ease, background 0.2s ease;
 }
 
 .popout-close:hover {
   color: #e0e0e0;
-  background: rgba(255, 255, 255, 0.1);
+  background: #252542;
 }
 
 .popout-header {

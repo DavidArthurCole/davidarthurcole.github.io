@@ -7,13 +7,33 @@ const cableHeight = ref(0);
 const jawOpen = ref(true);
 const cableEl = ref<HTMLElement | null>(null);
 
+let cancelled = false;
+
 function wait(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+function cancel() {
+  cancelled = true;
+  visible.value = false;
+  globalThis.removeEventListener('scroll', onUserScroll, { capture: true });
+  globalThis.removeEventListener('wheel', onUserScroll, { capture: true });
+  globalThis.removeEventListener('touchmove', onUserScroll, { capture: true });
+}
+
+function onUserScroll() {
+  cancel();
+}
+
 onMounted(async () => {
-  if (window.scrollY > 80) return;
+  if (globalThis.scrollY > 80) return;
+
+  globalThis.addEventListener('scroll', onUserScroll, { capture: true, passive: true });
+  globalThis.addEventListener('wheel', onUserScroll, { capture: true, passive: true });
+  globalThis.addEventListener('touchmove', onUserScroll, { capture: true, passive: true });
+
   await wait(2000);
+  if (cancelled) return;
 
   const aboutEl = document.getElementById('about');
   if (!aboutEl) return;
@@ -27,9 +47,10 @@ onMounted(async () => {
     // Place cable bottom at PFP top so the housing + arms overlap the image
     dropDepth = Math.max(0, Math.round(rect.top));
   } else {
-    dropDepth = Math.round(window.innerHeight * 0.45);
+    dropDepth = Math.round(globalThis.innerHeight * 0.45);
   }
 
+  if (cancelled) return;
   visible.value = true;
   await nextTick();
   await wait(60);
@@ -37,6 +58,8 @@ onMounted(async () => {
   // Drop cable to PFP (CSS transition)
   cablePhase.value = 'dropping';
   await nextTick();
+  // Wait for the browser to paint the .dropping class before changing height so the transition fires
+  await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
   cableHeight.value = dropDepth;
   await wait(1180);
 
@@ -50,7 +73,7 @@ onMounted(async () => {
   cablePhase.value = 'idle'; // remove CSS transition
   await nextTick();
 
-  const scrollFrom = window.scrollY;
+  const scrollFrom = globalThis.scrollY;
   const scrollDist = aboutEl.offsetTop - scrollFrom;
   const duration = 1100;
   const startTime = performance.now();
@@ -62,7 +85,7 @@ onMounted(async () => {
       const t = Math.min((now - startTime) / duration, 1);
       const eased = 1 - (1 - t) ** 3;
       const newScrollY = scrollFrom + scrollDist * eased;
-      window.scrollTo(0, newScrollY);
+      globalThis.scrollTo(0, newScrollY);
 
       if (!clawDone) {
         const newH = Math.max(0, dropDepth - newScrollY);
@@ -79,6 +102,10 @@ onMounted(async () => {
     }
     requestAnimationFrame(step);
   });
+
+  globalThis.removeEventListener('scroll', onUserScroll, { capture: true });
+  globalThis.removeEventListener('wheel', onUserScroll, { capture: true });
+  globalThis.removeEventListener('touchmove', onUserScroll, { capture: true });
 });
 </script>
 

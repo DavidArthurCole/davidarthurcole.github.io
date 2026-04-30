@@ -71,6 +71,7 @@ function scrollTo(id: string) {
     <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
 
       <!-- Left: always-visible contact chip (desktop only), single horizontal row -->
+      <Transition name="chip">
       <div v-if="showContact" class="contact-chip">
         <img src="/images/pfp.jpg" alt="David Cole" class="chip-pfp" />
         <span class="chip-name">{{ profile.name }}</span>
@@ -106,6 +107,7 @@ function scrollTo(id: string) {
           <img src="https://cdn.simpleicons.org/credly/FF6A13" alt="" class="chip-icon-img" />
         </a>
       </div>
+      </Transition>
 
       <!-- Right: desktop section links -->
       <ul class="hidden md:flex gap-6 list-none m-0 p-0 ml-auto">
@@ -153,6 +155,26 @@ function scrollTo(id: string) {
 </template>
 
 <style scoped>
+.chip-enter-active {
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+}
+
+.chip-leave-active {
+  transition: transform 0.22s ease, opacity 0.18s ease;
+}
+
+.chip-enter-from,
+.chip-leave-to {
+  transform: translateX(-24px);
+  opacity: 0;
+}
+
+.chip-enter-to,
+.chip-leave-from {
+  transform: translateX(0);
+  opacity: 1;
+}
+
 /* ---- Contact chip — single horizontal row ---- */
 .contact-chip {
   display: flex;
