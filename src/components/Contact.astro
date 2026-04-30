@@ -1,0 +1,30 @@
+---
+import Icon from './Icon.astro';
+import { profile } from '../data/site';
+---
+
+<section id="contact" class="py-24 px-6">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-3xl font-bold text-[#e0e0e0] mb-2">Contact</h2>
+    <div class="w-12 h-0.5 bg-gold mx-auto mb-10"></div>
+
+    <div class="flex flex-wrap justify-center gap-4">
+      {profile.socials.map((s) => (
+        <a
+          href={s.href}
+          target={s.icon !== 'email' ? '_blank' : undefined}
+          rel={s.icon !== 'email' ? 'noopener noreferrer' : undefined}
+          class="flex items-center gap-3 px-6 py-3 rounded-xl border border-white/10 text-[#a0a0a0] hover:text-gold hover:border-gold transition-colors duration-200"
+          style="background: rgba(255,255,255,0.04);"
+        >
+          <Icon name={s.icon} class="w-5 h-5" />
+          <span class="text-sm font-medium">{s.label}</span>
+        </a>
+      ))}
+    </div>
+
+    <p class="text-[#a0a0a0] text-sm mt-12">
+      &copy; {new Date().getFullYear()} David Cole
+    </p>
+  </div>
+</section>

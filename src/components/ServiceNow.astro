@@ -1,0 +1,112 @@
+---
+import { certifications, snSkills, snHighlights, snProjects, snCommunity } from '../data/site';
+---
+
+<section id="servicenow" class="py-24 px-6">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold text-[#e0e0e0] mb-2 text-center">ServiceNow</h2>
+    <div class="w-12 h-0.5 mx-auto mb-10" style="background: #00b2a9;"></div>
+
+    <h3 class="text-lg font-semibold mb-4" style="color: #00b2a9;">Certifications</h3>
+    <div class="flex gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:overflow-visible mb-12">
+      {certifications.map((cert) => (
+        <div
+          class="relative flex-shrink-0 w-64 md:w-auto rounded-xl border p-5"
+          style="background: rgba(0,178,169,0.06); border-color: rgba(0,178,169,0.2);"
+        >
+          <div class="flex items-start gap-3">
+            <img
+              src="/images/servicenow.png"
+              alt="ServiceNow"
+              class="w-8 h-8 object-contain flex-shrink-0 mt-0.5"
+            />
+            <div>
+              <p class="text-[#e0e0e0] text-sm font-medium leading-snug mb-1">{cert.name}</p>
+              <p class="text-[#a0a0a0] text-xs">Issued {cert.issued}</p>
+            </div>
+          </div>
+          {cert.credentialId && (
+            <a
+              href={`https://www.credly.com/badges/${cert.credentialId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View credential on Credly"
+              class="absolute bottom-3 right-3 text-[#a0a0a0] hover:text-[#00b2a9] transition-colors duration-200"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <h3 class="text-lg font-semibold mb-4" style="color: #00b2a9;">Platform Skills</h3>
+    <div class="flex flex-wrap gap-2 mb-12">
+      {snSkills.map((skill) => (
+        <span
+          class="px-3 py-1 rounded-full text-sm font-medium border"
+          style="background: rgba(0,178,169,0.08); border-color: rgba(0,178,169,0.25); color: #e0e0e0;"
+        >
+          {skill}
+        </span>
+      ))}
+    </div>
+
+    <h3 class="text-lg font-semibold mb-4" style="color: #00b2a9;">Notable Work</h3>
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      {snHighlights.map((h) => (
+        <div
+          class="rounded-xl border p-5"
+          style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08);"
+        >
+          <p class="font-semibold text-[#e0e0e0] mb-2 text-sm">{h.title}</p>
+          <p class="text-[#808080] text-xs leading-relaxed">{h.description}</p>
+        </div>
+      ))}
+    </div>
+
+    {snProjects.length > 0 && (
+      <div class="mb-12">
+        <h3 class="text-lg font-semibold mb-4" style="color: #00b2a9;">Platform Applications</h3>
+        <div class="grid md:grid-cols-2 gap-3">
+          {snProjects.map((p) => (
+            <div
+              class="rounded-lg border px-4 py-3"
+              style="background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.07);"
+            >
+              <p class="text-[#e0e0e0] text-sm font-medium">{p.name}</p>
+              <p class="text-[#a0a0a0] text-xs mt-0.5">{p.scope} - {p.type}</p>
+              {p.description && (
+                <p class="text-[#a0a0a0] text-xs mt-1 leading-relaxed">{p.description}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <div class="flex items-center gap-5 pt-2 border-t border-white/5">
+      <a
+        href={snCommunity.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-1.5 text-xs text-[#606060] hover:text-[#00b2a9] transition-colors duration-200"
+      >
+        <img src="/images/servicenow.png" alt="" class="w-3.5 h-3.5 object-contain opacity-60" />
+        Community profile
+      </a>
+      <span class="text-[#303030] text-xs select-none">|</span>
+      <a
+        href={snCommunity.credlyHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-1.5 text-xs text-[#606060] hover:text-[#ff6a13] transition-colors duration-200"
+      >
+        <img src="https://cdn.simpleicons.org/credly/FF6A13" alt="" class="w-3.5 h-3.5 object-contain opacity-60" />
+        Credly credentials
+      </a>
+    </div>
+  </div>
+</section>

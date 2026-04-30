@@ -1,0 +1,71 @@
+---
+import { experience, education } from '../data/site';
+---
+
+<section id="experience" class="py-24 px-6">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-3xl font-bold text-[#e0e0e0] mb-2 text-center">Experience</h2>
+    <div class="w-12 h-0.5 bg-gold mx-auto mb-10"></div>
+
+    <div class="relative">
+      <div class="absolute left-3 top-0 bottom-0 w-px bg-white/10"></div>
+
+      <div class="flex flex-col gap-10">
+        {experience.map((entry) => (
+          <div class="pl-10 relative">
+            <div
+              class="absolute left-0 top-1.5 w-6 h-6 rounded-full border-2 border-gold flex items-center justify-center"
+              style="background: #0d1117;"
+            >
+              <div class="w-2 h-2 rounded-full bg-gold"></div>
+            </div>
+
+            <div
+              class="rounded-xl border p-6"
+              style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08);"
+            >
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
+                <div>
+                  <h3 class="text-[#e0e0e0] font-semibold text-base">{entry.role}</h3>
+                  <p class="text-[#a0a0a0] text-sm">{entry.org} - {entry.type}</p>
+                </div>
+                <span class="text-[#a0a0a0] text-xs whitespace-nowrap">
+                  {entry.start} - {entry.end ?? 'Present'}
+                </span>
+              </div>
+              <ul class="list-none m-0 p-0 flex flex-col gap-1.5">
+                {entry.bullets.map((b) => (
+                  <li class="text-[#a0a0a0] text-sm leading-relaxed flex gap-2">
+                    <span class="text-gold flex-shrink-0 mt-0.5">-</span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="mt-12 pl-10 relative">
+      <div
+        class="absolute left-0 top-1.5 w-6 h-6 rounded-full border-2 flex items-center justify-center"
+        style="background: #0d1117; border-color: #a0a0a0;"
+      >
+        <div class="w-2 h-2 rounded-full bg-[#a0a0a0]"></div>
+      </div>
+      <div
+        class="rounded-xl border p-6"
+        style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08);"
+      >
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+          <div>
+            <h3 class="text-[#e0e0e0] font-semibold text-base">{education.degree}</h3>
+            <p class="text-[#a0a0a0] text-sm">{education.school}</p>
+          </div>
+          <span class="text-[#a0a0a0] text-xs">{education.years}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

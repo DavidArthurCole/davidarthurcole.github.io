@@ -1,0 +1,53 @@
+---
+import { projects } from '../data/site';
+---
+
+<section id="projects" class="py-24 px-6">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold text-[#e0e0e0] mb-2 text-center">Projects</h2>
+    <div class="w-12 h-0.5 bg-gold mx-auto mb-10"></div>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      {projects.map((project) => (
+        <a
+          href={project.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group rounded-xl border p-6 flex flex-col transition-all duration-200 hover:-translate-y-1"
+          style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08);"
+        >
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <span class="text-[#e0e0e0] font-semibold group-hover:text-gold transition-colors duration-200">
+              {project.name}
+            </span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4 text-[#606060] group-hover:text-gold flex-shrink-0 mt-0.5 transition-colors duration-200"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </div>
+
+          <p class="text-[#a0a0a0] text-sm leading-relaxed flex-1 mb-4">
+            {project.description}
+          </p>
+
+          <div class="flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <span
+                class="px-2.5 py-0.5 rounded-full text-xs border border-white/10 text-[#a0a0a0]"
+                style="background: rgba(255,255,255,0.05);"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

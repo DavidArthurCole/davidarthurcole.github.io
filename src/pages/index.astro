@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.vue';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import ServiceNow from '../components/ServiceNow.astro';
+import Experience from '../components/Experience.astro';
+import Skills from '../components/Skills.astro';
+import Projects from '../components/Projects.astro';
+import Contact from '../components/Contact.astro';
+import ArcadeClaw from '../components/ArcadeClaw.vue';
+---
+
+<Layout>
+  <ArcadeClaw client:only="vue" />
+  <Nav client:load />
+  <main>
+    <Hero />
+    <About />
+    <ServiceNow />
+    <Experience />
+    <Skills />
+    <Projects />
+    <Contact />
+  </main>
+</Layout>
